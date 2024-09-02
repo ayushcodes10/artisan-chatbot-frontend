@@ -1,0 +1,117 @@
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    width: 500px; 
+    height: 800px; 
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); 
+    padding: 10px; 
+}
+
+.widget-header {
+    background-color: #7d37ff;
+    color: white;
+    padding: 20px; 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.chatbot-icon {
+    background-color: white;
+    color: #7d37ff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.chatbot-text {
+    font-size: 1.1rem;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px; 
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin-bottom: 15px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message {
+    align-self: flex-end;
+    position: relative;
+    min-width: 150px; 
+}
+
+.chatbot-message {
+    display: flex;
+    align-items: flex-start;
+}
+
+.chatbot-image {
+    background-color: #7d37ff;
+    color: white;
+    border-radius: 50%;
+    width: 50px; 
+    height: 50px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px; 
+}
+
+.edit-delete-buttons {
+    position: absolute;
+    bottom: 5px; 
+    right: 5px; 
+    display: flex;
+    gap: 5px;
+    font-size: 0.75rem;
+}
+
+.edit-button, .delete-button {
+    background-color: white;
+    color: #7d37ff;
+    font-size: 0.8rem;
+}
+
+.input-container {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.text-box {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.suggestions {
+    margin-top: 10px; 
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 55px; 
+}
