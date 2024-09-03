@@ -6,7 +6,7 @@ import './ChatWidget.css';
 
 const ChatWidget: React.FC = () => {
     const [sessionId, setSessionId] = useState<string>('');
-    const [messages, setMessages] = useState<{ user_message: string, chatbot_response: string, suggestions?: { sid: string, suggestion_text: string }[] }[]>([]);
+    const [messages, setMessages] = useState<{ user_message: string, chatbot_response: string, suggestions?: string[] }[]>([]);
     const [input, setInput] = useState<string>('');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -42,7 +42,7 @@ const ChatWidget: React.FC = () => {
                 {
                     user_message: input,
                     chatbot_response: response.chatbot_response,
-                    suggestions: response.suggestions
+                    suggestions: response.suggestions || []
                 }
             ]);
             setInput('');
@@ -72,7 +72,7 @@ const ChatWidget: React.FC = () => {
 
         try {
             await deleteMessage(sessionId);
-            setMessages(prevMessages => prevMessages.slice(0, -2));
+            setMessages(prevMessages => prevMessages.slice(0, -1));
         } catch (error) {
             console.error('Failed to delete message', error);
         }
@@ -86,7 +86,7 @@ const ChatWidget: React.FC = () => {
                 {
                     user_message: suggestion,
                     chatbot_response: response.chatbot_response,
-                    suggestions: response.suggestions
+                    suggestions: response.suggestions || []
                 }
             ]);
         } catch (error) {
@@ -98,13 +98,23 @@ const ChatWidget: React.FC = () => {
         <Box className="chat-widget">
             <Box className="widget-header">
                 <Box className="chatbot-icon">CB</Box>
-                <Typography variant="subtitle1">Chatbot</Typography>
+                <Typography variant="subtitle1"><p>Hey 👋, I'm Ava</p></Typography>
             </Box>
             <Box className="chat-messages">
                 {messages.map((msg, index) => (
                     <React.Fragment key={index}>
                         {msg.user_message && (
                             <Box className="message user-message">
+                                {index === messages.length - 1 && (
+                                    <Box className="edit-delete-buttons">
+                                        <IconButton className="edit-button" onClick={handleEditMessage}>
+                                            <EditIcon fontSize="small" />
+                                        </IconButton>
+                                        <IconButton className="delete-button" onClick={handleDeleteMessage}>
+                                            <DeleteIcon fontSize="small" />
+                                        </IconButton>
+                                    </Box>
+                                )}
                                 <Paper elevation={3} sx={{ 
                                     backgroundColor: '#7d37ff', 
                                     color: 'white', 
@@ -115,16 +125,6 @@ const ChatWidget: React.FC = () => {
                                     alignSelf: 'flex-end'  // Ensure message is aligned to the right
                                 }}>
                                     <Typography variant="body1">{msg.user_message}</Typography>
-                                    {index === messages.length - 1 && (
-                                        <Box className="edit-delete-buttons">
-                                            <IconButton className="edit-button" onClick={handleEditMessage}>
-                                                <EditIcon fontSize="small" />
-                                            </IconButton>
-                                            <IconButton className="delete-button" onClick={handleDeleteMessage}>
-                                                <DeleteIcon fontSize="small" />
-                                            </IconButton>
-                                        </Box>
-                                    )}
                                 </Paper>
                             </Box>
                         )}
@@ -144,11 +144,11 @@ const ChatWidget: React.FC = () => {
                                 </Paper>
                                 {msg.suggestions && (
                                     <Box className="suggestions">
-                                        {msg.suggestions.map(suggestion => (
+                                        {msg.suggestions.map((suggestion, suggestionIndex) => (
                                             <Button 
-                                                key={suggestion.sid} 
+                                                key={suggestionIndex} 
                                                 variant="outlined"
-                                                onClick={() => handleSuggestionClick(suggestion.suggestion_text)}
+                                                onClick={() => handleSuggestionClick(suggestion)}
                                                 sx={{ 
                                                     borderColor: '#7d37ff', 
                                                     color: 'black', 
@@ -157,7 +157,7 @@ const ChatWidget: React.FC = () => {
                                                     fontSize: 'small' 
                                                 }}
                                             >
-                                                {suggestion.suggestion_text}
+                                                {suggestion}
                                             </Button>
                                         ))}
                                     </Box>

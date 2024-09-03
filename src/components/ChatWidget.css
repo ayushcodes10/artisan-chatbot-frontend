@@ -54,6 +54,7 @@
     margin-bottom: 15px; 
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .user-message {
@@ -81,17 +82,30 @@
 
 .edit-delete-buttons {
     position: absolute;
-    bottom: 5px; 
-    right: 5px; 
+    top: -35px; /* Adjust this value if needed */
+    right: 0;
     display: flex;
-    gap: 5px;
-    font-size: 0.75rem;
+    gap: 10px;
+    font-size: 0.8rem;
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .edit-button, .delete-button {
-    background-color: white;
-    color: #7d37ff;
-    font-size: 0.8rem;
+    background-color: #7d37ff;
+    color: white;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #5a1d9e;
 }
 
 .input-container {
