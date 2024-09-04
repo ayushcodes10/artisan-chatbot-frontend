@@ -1,24 +1,26 @@
+/* Main container for the chat widget */
 .chat-widget {
-    position: fixed;
+    position: fixed; /* Fixed position to stay at the bottom right corner */
     bottom: 20px;
     right: 20px; 
     width: 500px; 
     height: 800px; 
     display: flex;
     flex-direction: column;
-    border: 1px solid #ddd;
-    border-radius: 20px;
+    border: 1px solid #ddd; /* Light border around the widget */
+    border-radius: 20px; /* Rounded corners */
     background: white;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
     padding: 10px; 
 }
 
+/* Header section of the chat widget */
 .widget-header {
-    background-color: #7d37ff;
-    color: white;
+    background-color: #7d37ff; /* Header background color */
+    color: white; /* Text color in the header */
     padding: 20px; 
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 20px; /* Rounded top-left corner */
+    border-top-right-radius: 20px; /* Rounded top-right corner */
     display: flex;
     flex-direction: column; 
     align-items: center;
@@ -26,10 +28,11 @@
     position: relative;
 }
 
+/* Icon representing the chatbot in the header */
 .chatbot-icon {
-    background-color: white;
-    color: #7d37ff;
-    border-radius: 50%;
+    background-color: white; /* Background color for the icon */
+    color: #7d37ff; /* Icon text color */
+    border-radius: 50%; /* Circular shape */
     width: 60px;
     height: 60px; 
     display: flex;
@@ -38,18 +41,21 @@
     margin-bottom: 10px;
 }
 
+/* Text below the chatbot icon in the header */
 .chatbot-text {
     font-size: 1.1rem;
 }
 
+/* Container for chat messages */
 .chat-messages {
     flex: 1;
     padding: 15px; 
-    overflow-y: auto;
+    overflow-y: auto; /* Allows scrolling when messages exceed height */
     display: flex;
     flex-direction: column;
 }
 
+/* Wrapper for each message */
 .message {
     margin-bottom: 15px; 
     display: flex;
@@ -57,21 +63,24 @@
     position: relative;
 }
 
+/* Style for user messages */
 .user-message {
-    align-self: flex-end;
+    align-self: flex-end; /* Aligns message to the right */
     position: relative;
     min-width: 150px; 
 }
 
+/* Style for chatbot messages */
 .chatbot-message {
     display: flex;
     align-items: flex-start;
 }
 
+/* Image or placeholder for the chatbot */
 .chatbot-image {
-    background-color: #7d37ff;
-    color: white;
-    border-radius: 50%;
+    background-color: #7d37ff; /* Background color for the chatbot image */
+    color: white; /* Text color in the chatbot image */
+    border-radius: 50%; /* Circular shape */
     width: 50px; 
     height: 50px; 
     display: flex;
@@ -80,52 +89,58 @@
     margin-right: 15px; 
 }
 
+/* Buttons for editing and deleting messages */
 .edit-delete-buttons {
     position: absolute;
-    top: -35px; /* Adjust this value if needed */
+    top: -35px; /* Position above the message */
     right: 0;
     display: flex;
     gap: 10px;
     font-size: 0.8rem;
-    background-color: white;
+    background-color: white; /* Background for the buttons */
     padding: 5px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px; /* Rounded corners for buttons container */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
 
+/* Style for edit and delete buttons */
 .edit-button, .delete-button {
-    background-color: #7d37ff;
-    color: white;
+    background-color: #7d37ff; /* Button background color */
+    color: white; /* Text color */
     font-size: 0.75rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 4px; /* Rounded corners */
     padding: 6px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
+/* Hover effect for edit and delete buttons */
 .edit-button:hover, .delete-button:hover {
-    background-color: #5a1d9e;
+    background-color: #5a1d9e; /* Darker shade on hover */
 }
 
+/* Container for the input area at the bottom */
 .input-container {
     padding: 15px;
-    border-top: 1px solid #ddd;
-    background-color: white;
+    border-top: 1px solid #ddd; /* Top border to separate from messages */
+    background-color: white; /* Background color for input area */
     display: flex;
     align-items: center;
 }
 
+/* Flex container for text input and send button */
 .text-box {
     display: flex;
     align-items: center;
-    flex: 1;
+    flex: 1; /* Takes up remaining space */
 }
 
+/* Container for suggestion buttons */
 .suggestions {
     margin-top: 10px; 
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-left: 55px; 
+    gap: 5px; /* Spacing between suggestions */
+    margin-left: 55px; /* Align with chatbot image */
 }
