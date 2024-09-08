@@ -24,7 +24,7 @@ export const sendMessage = async (sessionId: string, message: string) => {
 // Function to edit an existing message in a session
 export const editMessage = async (sessionId: string, message: string) => {
     // Send a POST request to edit the message in the specified session
-    const response = await axios.post(`${API_URL}/messages/edit`, { session_id: sessionId, message });
+    const response = await axios.put(`${API_URL}/edit`, { session_id: sessionId, new_message: message });
     
     // Return the response data
     return response.data;
@@ -33,5 +33,5 @@ export const editMessage = async (sessionId: string, message: string) => {
 // Function to delete a message from a session
 export const deleteMessage = async (sessionId: string) => {
     // Send a POST request to delete the message from the specified session
-    await axios.post(`${API_URL}/messages/delete`, { session_id: sessionId });
+    await axios.delete(`${API_URL}/messages/delete`, { params: { session_id: sessionId } });
 };
