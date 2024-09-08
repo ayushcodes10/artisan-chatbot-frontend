@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-// Base URL for the API
-const API_URL = 'http://localhost:8000';
+// Load environment variables from .env file
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Base URL for the API from environment variable
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Function to create a new session
 export const createSession = async () => {
