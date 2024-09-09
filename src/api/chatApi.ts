@@ -3,7 +3,7 @@ import axios from 'axios';
 // Base URL for the API
 // const API_URL = 'http://localhost:8000';
 
-const API_URL = 'http://54.147.138.162:8000';
+const API_URL = 'https://107.22.158.80';
 
 // Function to create a new session
 export const createSession = async () => {
